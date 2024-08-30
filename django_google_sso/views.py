@@ -115,7 +115,10 @@ def callback(request: HttpRequest) -> HttpResponseRedirect:
     module_path = ".".join(conf.GOOGLE_SSO_PRE_CREATE_CALLBACK.split(".")[:-1])
     pre_login_fn = conf.GOOGLE_SSO_PRE_CREATE_CALLBACK.split(".")[-1]
     module = importlib.import_module(module_path)
-    extra_users_args = getattr(module, pre_login_fn)(google_user_data, request)
+    extra_users_args, redirect_resp = getattr(module, pre_login_fn)(google_user_data, request)
+
+    if isinstance(redirect_resp, HttpResponseRedirect):
+        return redirect_resp
 
     # Get or Create User
     if conf.GOOGLE_SSO_AUTO_CREATE_USERS:

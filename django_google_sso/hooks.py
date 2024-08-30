@@ -21,8 +21,9 @@ def pre_create_user(google_user_info: dict, request: HttpRequest) -> dict | None
             as `defaults` argument.
             If not informed, username field (default: `username`)
             is always the user email.
+            # TODO update the comment and add the addon key added over here
     """
-    return {}
+    return {}, None
 
 
 def pre_validate_user(google_user_info: dict, request: HttpRequest) -> bool:
