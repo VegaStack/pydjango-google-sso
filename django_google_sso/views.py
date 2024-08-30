@@ -117,6 +117,10 @@ def callback(request: HttpRequest) -> HttpResponseRedirect:
     module = importlib.import_module(module_path)
     extra_users_args, redirect_resp = getattr(module, pre_login_fn)(google_user_data, request)
 
+    logger.debug(f"extra_users_args: {extra_users_args}")
+    logger.debug(f"redirect_resp: {redirect_resp}")
+    logger.debug("--------------------------------------------")
+
     if isinstance(redirect_resp, HttpResponseRedirect):
         return redirect_resp
 
