@@ -30,7 +30,7 @@ jobs:
         echo "index-servers = gitlab" >> ~/.pypirc
         echo "[gitlab]" >> ~/.pypirc
         echo "repository = https://peerxp.vegaops.com/api/v4/projects/2160/packages/pypi" >> ~/.pypirc
-        echo "username = __token__" >> ~/.pypirc
+        echo "username = ops-bot" >> ~/.pypirc
         echo "password = ${{ secrets.GITLAB_TOKEN }}" >> ~/.pypirc
     
     - name: Upload to GitLab
